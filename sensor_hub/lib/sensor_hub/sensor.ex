@@ -11,12 +11,11 @@ defmodule SensorHub.Sensor do
     }
   end
 
-  def fields(BPM280), do: [:temperature_c]
+  def fields(BMP280), do: [:temperature_c]
   def fields(ADS1015), do: [:voltage]
 
-
-  def read_fn(BMP280), do: fn(_gain) -> BMP280.measure(BMP280) end  # gen_server
-  def read_fn(ADS1015), do: fn(gain) -> ADS1015.measure(gain) end   # gain settings
+  def read_fn(BMP280), do: fn() -> BMP280.measure(BMP280) end  # gen_server
+  def read_fn(ADS1015), do: fn() -> ADS1015.measure() end   # gain settings
 
   def convert_fn(BMP280) do
     fn reading ->

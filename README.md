@@ -151,3 +151,15 @@ BTW: did you notice this in target.exs
 # Chapter4
 
 Make a GenServer to read the sensors and send to the server.
+
+
+I created the Sensor so I could read it with a layer so I can make them all have the same interface.
+
+I created a Publisher GenServer to read measurements every 5 seconds and log them.
+The init in this creates the sensor and saves to states.
+
+Now there are two GenServers:
+* BMP280 (with name BMP280)
+* Publisher (with name Publisher)
+
+I remembered to add Publisher to the children in application.ex
