@@ -134,5 +134,20 @@ iex> BMP280.measure(bmp)
    timestamp_ms: 885906
  }}
 
+` !bmp280 is a gen_server so must be started
+` Add some code to sensor_hub (sensor.ex)
+
+Now just do 
+
+mix firmware
+mix upload nerves.local
+ssh nerves.local
+
+BTW: did you notice this in target.exs
+
+    Path.join([System.user_home!(), ".ssh", "id_rsa.pub"]),
 
 
+# Chapter4
+
+Make a GenServer to read the sensors and send to the server.
