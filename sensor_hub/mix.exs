@@ -71,8 +71,9 @@ defmodule SensorHub.MixProject do
       {:nerves_system_grisp2, "~> 0.3", runtime: false, targets: :grisp2},
       {:nerves_system_mangopi_mq_pro, "~> 0.4", runtime: false, targets: :mangopi_mq_pro},
 
-      {:circuits_i2c, "~> 1.1.0"}
-
+      {:circuits_i2c, "~> 1.0"},
+      {:ads1115, path: "../ads1115", targets: @all_targets},
+      {:bmp280, path: "../bmp280", targets: @all_targets}
     ]
   end
 

@@ -49,7 +49,7 @@ hostname()
 ls()
 ```
 
-## SECOND BIT
+# Chapter2
 
 https://github.com/elixir-circuits/circuits_i2c/blob/v2.0.1/README.md#L1
 https://hexdocs.pm/circuits_i2c/readme.html
@@ -102,6 +102,37 @@ end
 measure_light.(i2c_ref, sensor)
 ```
 
+
+# Chapter3 
+
+`# Lets get a couple of sensors, one from git, and the other from clone
+
+cd ..
+git clone git@github.com:mmmries/ads1115.git
+git clone git@github.com:elixir-sensors/bmp280.git
+
+Add to mix file
+
+{:ads1115, path: "../ads1115", targets: @all_targets},
+{:bmp280, path: "../bmp280", targets: @all_targets}
+
+`I had to update the AS1115 circuits_i2c to a 1.0 version!
+
+{:bmp280, "~> 0.2.12",  targets: @all_targets}
+
+iex> {:ok, bmp} = BMP280.start_link(bus_name: "i2c-1", bus_address: 0x77)
+{:ok, #PID<0.29929.0>}
+iex> BMP280.measure(bmp)
+{:ok,
+ %BMP280.Measurement{
+   altitude_m: 138.96206905098805,
+   dew_point_c: 2.629181073094435,
+   gas_resistance_ohms: 5279.474749704044,
+   humidity_rh: 34.39681642351278,
+   pressure_pa: 100818.86273677988,
+   temperature_c: 18.645856498100876,
+   timestamp_ms: 885906
+ }}
 
 
 
